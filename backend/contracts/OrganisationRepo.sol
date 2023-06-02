@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.9;
-//import './mail.sol';
+pragma solidity ^0.8.0;
+import './Mail.sol';
+import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract OrganisationRepo{
+contract OrganisationRepo is Mail{
     struct User{
         string name;
         string email;
@@ -33,6 +34,7 @@ contract OrganisationRepo{
         address account;
         uint256 index;
         uint256 globalIndex;
+        bool mailSent;
     }
     
     mapping(address=>User) public users;
@@ -56,6 +58,9 @@ contract OrganisationRepo{
     Repo[] public repoList;
     User[] public userList;
     
+    uint256 constant public thresholdAmount = 6000000000000000;
+    string internal jobId;
+
     event contribute(
         string indexed userId,
         string indexed repoId,
@@ -76,15 +81,18 @@ contract OrganisationRepo{
         uint256 timestamp
     );
 
-    constructor(uint256 _fees){
+    constructor(uint256 _fees, string memory _jobId) 
+    Mail() 
+    {
         admin = msg.sender;
         fees = _fees;
         universalIndex=0;
+        jobId = _jobId;
     }
 
     function addUser(address _user, string memory _name, string memory _email, string memory id, string memory installation_id) public{
+        require(msg.sender == admin, "Unauthorized");
         require(keccak256(abi.encodePacked(users[_user].userId)) != keccak256(abi.encodePacked(id)), "User already exists");
-        
         users[_user].name = _name;
         users[_user].email = _email;
         users[_user].userId = id;
@@ -101,7 +109,7 @@ contract OrganisationRepo{
         require(msg.value == amount,"Not the specified amount");
         require(amount != 0,"Cannot have zero balance");
         require(_default != 0, "Enter valid amount for bug fixing");
-        require(_default<amount, "Enter feasible prize");
+        require(_default<=amount, "Enter feasible prize");
         uint256 fee = fees*amount/100;
         payable(admin).transfer(fee);
 
@@ -167,6 +175,7 @@ contract OrganisationRepo{
     }
 
     function commitOccured(string memory _userId, string memory _repoId, string memory labelId) public{
+        require(msg.sender == admin, "Unauthorized");
         require(userRegister[_userId] != 0x0000000000000000000000000000000000000000, "User not found"); //code to be writen
         require(repoRegister[_repoId].account != 0x0000000000000000000000000000000000000000, "Repository not found");
         uint256 index = repoRegister[_repoId].index;
@@ -191,6 +200,11 @@ contract OrganisationRepo{
         totalContributions++;
         // username, reponame
         emit contribute(_userId, _repoId, users[userRegister[_userId]].name, repo.name, userRegister[_userId], prize, block.timestamp);
+        if(repo.balance<thresholdAmount && !repoRegister[_repoId].mailSent){
+            string memory balanceString =  Strings.toString(repo.balance);
+            mail(jobId, repo.email, balanceString, repo.name);
+            repoRegister[_repoId].mailSent = true;
+        }
     }
 
     function withdrawBalance(uint256 percent, string memory _repoId) public{
@@ -255,6 +269,7 @@ contract OrganisationRepo{
         uint256 _globalIndex = repoRegister[repoId].globalIndex;
         Repo storage repo = repoList[_globalIndex];
         repo.balance += amount;
+        repoRegister[repoId].mailSent = false;
         emit fundsChanged(repoId, msg.sender, repo.name, msg.sender, amount, true, block.timestamp);
     }
 
@@ -276,6 +291,14 @@ contract OrganisationRepo{
         return repoList;
     }
 
+    function setJobId(string memory _jobid) public {
+        require(msg.sender == admin, "Unauthorized");
+        jobId = _jobid;
+    }
+    function getJobId() public view returns (string memory){
+        require(msg.sender == admin, "Unauthorized");
+        return jobId;
+    }
     function getAllUsers() public view returns (User[] memory){
         return userList;
     }
