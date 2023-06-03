@@ -26,7 +26,7 @@ export function SiteHeader() {
               <>
                 {!isGithubConnected ? (
                   <Link
-                    href="https://github.com/apps/rushwebhooktest1/installations/new"
+                    href="https://github.com/apps/devrewards/installations/new"
                     className={buttonVariants({ variant: "outline" })}>
                     Connect Github
                   </Link>

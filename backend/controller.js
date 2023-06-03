@@ -2,6 +2,7 @@ const { App, Octokit } = require("octokit");
 const { createNodeMiddleware } = require("@octokit/webhooks");
 const fs = require("fs");
 const { setUser, sendReward } = require("./transact");
+const { sendBalanceMail } = require("./mail");
 
 const appId = process.env.APP_ID;
 const webhookSecret = process.env.WEBHOOK_SECRET;
@@ -131,7 +132,10 @@ async function getRepos(req, res) {
 // fix this 
 // send email
 async function sendMail(req, res){
-  console.log(req.body);
+  // console.log(req.body);  
+  const {data} = req.body;
+  if(!data) return res.status(404).send("Error")
+  sendBalanceMail(data.data.recipientEmail, data.data.balance, data.data.repoName)
   return res.status(200).send("OK");
 }
 

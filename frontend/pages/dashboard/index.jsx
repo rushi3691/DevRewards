@@ -19,11 +19,35 @@ import { Icons } from "@/components/icons"
 import { Loader2 } from "lucide-react"
 
 export default function Dashboard() {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const { githubData, setGithubData, isGithubConnected, setIsGithubConnected, contract } = useContext(AppContext);
 
   const [repos, setRepos] = useState([]);
   const [loadingRepo, setLoadingRepo] = useState(true);
+
+  const [updatingData, setUpdatingData] = useState(false);
+
+  const refresh_user_data = async () => {
+    setUpdatingData(true);
+    const userInfo = await contract.users(address);
+
+    const data = {
+      userId: userInfo.userId,
+      installationId: userInfo.installationId,
+      email: userInfo.email,
+      name: userInfo.name,
+      commitCount: userInfo.commitCount?.toString(),
+      rewardsEarned: ethers.utils.formatEther(userInfo.rewardsEarned)?.toString(),
+      activeRepos: userInfo.activeRepos?.toString(),
+    }
+    console.log("data", data);
+    if (data.userId !== "") {
+      setGithubData(data);
+    }
+    setUpdatingData(false);
+  }
+
+  
   const fetchRepo = async () => {
     const data = await contract.viewUserRepos();
     setRepos(data);
@@ -34,6 +58,10 @@ export default function Dashboard() {
       fetchRepo();
     }
   }, [isGithubConnected])
+
+
+
+
   if (!isConnected || !isGithubConnected) {
     return <ErrorPage statusCode={404} title="Try connecting your wallet and github account" />
   }
@@ -46,7 +74,7 @@ export default function Dashboard() {
             Dashboard
           </h1>
           <p className="text-muted-foreground max-w-[700px] text-lg sm:text-xl">
-          Track your contributions, manage funds, and stay up-to-date with the latest activities in the DevRewards community
+            Track your contributions, manage funds, and stay up-to-date with the latest activities in the DevRewards community
           </p>
         </div>
       </section>
@@ -58,7 +86,22 @@ export default function Dashboard() {
           {/* card for progress */}
           <Card className="w-2/3">
             <CardHeader>
-              <CardTitle>Progress</CardTitle>
+              <div className="flex justify-between content-center">
+                <CardTitle>Progress</CardTitle>
+                {/* <Button variant="link" className="p-0 h-0" asChild> */}
+                <CardDescription>
+                  {updatingData?(
+                    <>
+                    Updating...
+                    </>
+                  ):(
+                    <button className="hover:underline" onClick={refresh_user_data}>
+                      Refresh
+                    </button>
+                  )}
+                </CardDescription>
+                {/* </Button> */}
+              </div>
             </CardHeader>
             <CardContent className="flex justify-between" >
               <div>
