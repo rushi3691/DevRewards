@@ -1,9 +1,9 @@
 ![Forks](https://img.shields.io/badge/forks-0-blue)
 ![Stars](https://img.shields.io/badge/stars-0-yellow)
 
+![devrewards-high-resolution-logo-black-on-white-background (1)](https://github.com/rushi3691/DevRewards/assets/71341783/de34cbe2-eb88-4e9b-b1b7-8b7fbb9f3ea2)
 
-<!-- ![Logo](https://github.com/Kshitij0O7/HackathonReadme/assets/91107953/b7519547-42b7-4dde-8acd-89d2f6f60832) -->
-![devrewards-high-resolution-logo-black-on-white-background](https://github.com/rushi3691/DevRewards/assets/71341783/827c4106-00b9-456e-b041-ad51aba69e0b)
+
 # DevRewards
 
 
