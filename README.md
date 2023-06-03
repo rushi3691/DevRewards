@@ -70,13 +70,6 @@ For the best experience we recomend having
 - ![App Screenshot](https://github.com/Kshitij0O7/HackathonReadme/assets/91107953/bcd30268-5c2f-4253-af0d-a2f91cf30f76) 
 
 
-## Documentation
-
-[Documentation](https://linktodocumentation)
-
-
-
-
 ## Authors
 
 - [@rushikesh](https://github.com/rushi3691)
