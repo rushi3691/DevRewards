@@ -2,8 +2,10 @@
 ![Stars](https://img.shields.io/badge/stars-0-yellow)
 
 
-![Logo](https://github.com/Kshitij0O7/HackathonReadme/assets/91107953/b7519547-42b7-4dde-8acd-89d2f6f60832)
+<!-- ![Logo](https://github.com/Kshitij0O7/HackathonReadme/assets/91107953/b7519547-42b7-4dde-8acd-89d2f6f60832) -->
+![devrewards-high-resolution-logo-black-on-white-background](https://github.com/rushi3691/DevRewards/assets/71341783/827c4106-00b9-456e-b041-ad51aba69e0b)
 # DevRewards
+
 
 Welcome to our project! Here, we present an innovative web3 application designed to revolutionize the way open source contributions are recognized and rewarded. Our platform seamlessly integrates with user's GitHub profiles, leveraging webhooks and a robust smart contract to incentivize and acknowledge valuable contributions made to repositories listed on our platform.
 
