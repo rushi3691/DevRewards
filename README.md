@@ -19,18 +19,18 @@ Our application provides a simple and secure way for users to connect their GitH
 - Automatic reward delivery: The platform ensures rewards are delivered to contributors automatically.
 - List your own repositories: Share your projects on the platform and invite others to contribute.
 - Chainlink Oracle integration: Balance notification system for project owners to send emails via Gmail.
+- Logs: See all the transactions happening through the platform, such as funding, withdrawing, and rewarding code contributions.
 
 
 ## Demo
 Do checkout our project once
 
-
 Live Link 👉 **[DevRewards](https://devrewards.vercel.app/)**
 
 Click on the link below to see our demo video where we have given a demo of our finished project while explaining the complex logic behind them.
 
-
 Video 👉 youtube Video
+
 
 ## Usage
 
@@ -48,6 +48,7 @@ To use DevRewards, follow these steps:
 
 ![App Screenshot](https://github.com/Kshitij0O7/HackathonReadme/assets/91107953/45997575-2dce-446e-9e24-ab1931f57dc8)
 
+
 ## Technology
 
 - Frontend: Next.js, Tailwind CSS, Wagmi
@@ -59,15 +60,6 @@ To use DevRewards, follow these steps:
 
 For the best experience we recommend having
 - Browser support: Add metamask or some other wallet extension to be installed
-
-
-## Features
-
-- Light/dark mode toggle
-- Trending Repositories
-- Dashboard for analysing your profile
-- Logs that would reflect your github activity
-
 
 
 ## Screenshots
