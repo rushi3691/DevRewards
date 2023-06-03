@@ -12,6 +12,13 @@ Open source software development thrives on collaboration, and we firmly believe
 Our application provides a simple and secure way for users to connect their GitHub profiles, granting access to their webhooks. By monitoring users' repositories and tracking their contributions, we gather valuable data that enables us to accurately assess the impact of their work. Leveraging the power of our smart contract, we can then allocate rewards based on predefined criteria, ensuring fairness and transparency in the process.
 
 
+## Key Features
+
+- Simple to use: Connect your wallet and GitHub account to get started.
+- Contribute to listed projects: Start contributing to existing projects immediately.
+- Automatic reward delivery: The platform ensures rewards are delivered to contributors automatically.
+- List your own repositories: Share your projects on the platform and invite others to contribute.
+- Chainlink Oracle integration: Balance notification system for project owners to send emails via Gmail.
 
 
 ## Demo
@@ -25,26 +32,33 @@ Click on the link below to see our demo video where we have given a demo of our 
 
 Video 👉 youtube Video
 
+## Usage
+
+To use DevRewards, follow these steps:
+
+1. Visit the DevRewards website at [https://www.devrewards.com](https://www.devrewards.com)
+2. Connect your wallet and GitHub account to the platform.
+3. Browse the catalogue page to find listed repositories and rewards they offer.
+4. Contribute to the repositories by submitting code contributions (pull requests).
+5. Visit the dashboard page to manage your repositories and set reward rules.
+6. Explore the logs page to track transactions and activities on the platform.
+
+
 ## Architecture
 
 ![App Screenshot](https://github.com/Kshitij0O7/HackathonReadme/assets/91107953/45997575-2dce-446e-9e24-ab1931f57dc8)
 
-## Tech Stack
+## Technology
 
-Client: NEXT.js, React, TailwindCSS
-
-Backend: Smart Contracts, Node.js, Express, Chainlink Oracle
-
-Deployment: Docker, AWS
+- Frontend: Next.js, Tailwind CSS, Wagmi
+- Backend: Smart contract, Express.js, Node.js, Chainlink Oracle
+- Deployment: Docker, AWS
 
 
 ## Add-ons
 
 For the best experience we recommend having
-
 - Browser support: Add metamask or some other wallet extension to be installed
-
-- Integrations: Github installer
 
 
 ## Features
