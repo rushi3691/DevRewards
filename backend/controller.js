@@ -131,12 +131,20 @@ async function getRepos(req, res) {
 
 // fix this 
 // send email
-async function sendMail(req, res){
+async function sendMail(req, res) {
   // console.log(req.body);  
-  const {data} = req.body;
-  if(!data) return res.status(404).send("Error")
-  sendBalanceMail(data.data.recipientEmail, data.data.balance, data.data.repoName)
-  return res.status(200).send("OK");
+  const { data } = req.body;
+  if (!data) return res.json({
+    data: {
+      result: "ok"
+    }
+  })
+  sendBalanceMail(data.recipientEmail, data.balance, data.repoName)
+  return res.json({
+    data: {
+      result: "ok"
+    }
+  })
 }
 
 module.exports = {

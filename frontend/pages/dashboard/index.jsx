@@ -30,7 +30,6 @@ export default function Dashboard() {
   const refresh_user_data = async () => {
     setUpdatingData(true);
     const userInfo = await contract.users(address);
-
     const data = {
       userId: userInfo.userId,
       installationId: userInfo.installationId,
@@ -40,10 +39,12 @@ export default function Dashboard() {
       rewardsEarned: ethers.utils.formatEther(userInfo.rewardsEarned)?.toString(),
       activeRepos: userInfo.activeRepos?.toString(),
     }
-    console.log("data", data);
+    // console.log("data", data);
     if (data.userId !== "") {
       setGithubData(data);
     }
+
+    await fetchRepo();
     setUpdatingData(false);
   }
 

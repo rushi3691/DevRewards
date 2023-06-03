@@ -55,7 +55,7 @@ const indData = (balance, repoName) => {
   <div class="container">
     <h1>Low Balance Notification</h1>
     <p>Dear User,</p>
-    <p>We wanted to inform you that your account balance for repository ${repoName} is currently <span class="highlight">${ethers.utils.formatEther(balance)}</span>.</p>
+    <p>We wanted to inform you that your account balance for repository ${repoName} is currently <span class="highlight">${ethers.utils.formatEther(balance)} ETH</span>.</p>
     <p>Please take the necessary actions to ensure your account is adequately funded to meet your financial needs.</p>
     <p>If you have any questions or concerns, please feel free to contact our support team at <a href="mailto:support@example.com">support@example.com</a>.</p>
     <p>Best regards,<br> 
@@ -70,6 +70,8 @@ const indData = (balance, repoName) => {
 
 
 const sendBalanceMail = (to, balance, repoName) => {
+    console.log(to, balance, repoName)
+    console.log(process.env.MAIL_ADDRESS, process.env.MAIL_PASSWORD)
     var mailOptions = {
         from: {
             name: 'DevRewards',

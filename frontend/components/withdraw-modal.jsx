@@ -27,7 +27,7 @@ export default function WithdrawDialog({ open, setOpen, repoId, repoName, fetchR
   const withdraw = async () => {
     setLoading(true);
     try {
-      const data = await contract.withdrawBalance(
+      const data = await contract.withdrawAmount(
         ethers.utils.parseUnits(amountPercent, 0),
         repoId
       );
