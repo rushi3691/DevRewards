@@ -31,16 +31,16 @@ Video 👉 youtube Video
 
 ## Tech Stack
 
-Client: React, Redux, TailwindCSS
+Client: NEXT.js, React, TailwindCSS
 
-Server: Node, Express, Smart Contracts
+Backend: Smart Contracts, Node.js, Express, Chainlink Oracle
 
 Deployment: Docker, AWS
 
 
 ## Add-ons
 
-For the best experience we recomend having
+For the best experience we recommend having
 
 - Browser support: Add metamask or some other wallet extension to be installed
 
