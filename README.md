@@ -62,19 +62,7 @@ To use DevRewards, follow these steps:
 
 For the best experience we recommend having
 - Browser support: Add metamask or some other wallet extension to be installed
-
-
-## Screenshots
-
-
-- ![Screenshot from 2023-06-04 01-01-21](https://github.com/rushi3691/DevRewards/assets/71341783/319710f8-a7b9-420e-9ffe-beeec15032aa)
-
-- ![Screenshot from 2023-06-04 01-01-39](https://github.com/rushi3691/DevRewards/assets/71341783/ff3e5b70-518d-4712-88fb-91e21b4eac17)
-
-- ![Screenshot from 2023-06-04 01-03-25](https://github.com/rushi3691/DevRewards/assets/71341783/b1e2a234-4279-4f37-98fb-726f8a3ebe0b)
-
-- ![Screenshot from 2023-06-04 01-03-38](https://github.com/rushi3691/DevRewards/assets/71341783/ff38ee21-7f7d-4d4d-9f45-59c5382fcc3a)
-
+  (has been tested using metamask only)
 
 ## Authors
 
