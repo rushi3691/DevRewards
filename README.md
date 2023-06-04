@@ -48,14 +48,14 @@ To use DevRewards, follow these steps:
 
 ## Architecture
 
-![App Screenshot](https://github.com/Kshitij0O7/HackathonReadme/assets/91107953/45997575-2dce-446e-9e24-ab1931f57dc8)
+![hackathon (2)](https://github.com/rushi3691/DevRewards/assets/71341783/a57a3f00-96e3-4264-9422-d1cf6b17f186)
 
 
 ## Technology
 
 - Frontend: Next.js, Tailwind CSS, Wagmi
 - Backend: Smart contract, Express.js, Node.js, Chainlink Oracle
-- Deployment: Docker, AWS
+- Deployment: Docker, AWS, Vercel
 
 
 ## Add-ons
