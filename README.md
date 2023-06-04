@@ -38,7 +38,7 @@ Video 👉 youtube Video
 
 To use DevRewards, follow these steps:
 
-1. Visit the DevRewards website at [https://www.devrewards.com](https://www.devrewards.com)
+1. Visit the DevRewards website at [DevRewards](https://devrewards.vercel.app/)
 2. Connect your wallet and GitHub account to the platform.
 3. Browse the catalogue page to find listed repositories and rewards they offer.
 4. Contribute to the repositories by submitting code contributions (pull requests).
