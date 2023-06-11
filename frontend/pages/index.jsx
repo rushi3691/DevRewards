@@ -122,21 +122,21 @@ export default function IndexPage() {
         </div>
         <div className="flex gap-4">
           <Link
-            href="https://github.com/rushi3691/DevRewards/"
-            target="_blank"
+            href="#"
+            // target="_blank"
             rel="noreferrer"
             className={buttonVariants({ size: "lg" })}
           >
-            Github
+            Documentation
           </Link>
 
           <Link
             href="#"
-            target="_blank"
+            // target="_blank"
             rel="noreferrer"
             className={buttonVariants({ variant: "outline", size: "lg" })}
           >
-            Demo
+            GitHub
           </Link>
         </div>
         <h1 className="text-center mt-20 text-2xl font-extrabold leading-tight tracking-tighter sm:text-xl md:text-2xl lg:text-3xl">
