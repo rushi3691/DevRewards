@@ -31,7 +31,7 @@ Live Link 👉 **[DevRewards](https://devrewards.vercel.app/)**
 
 Click on the link below to see our demo video where we have given a demo of our finished project while explaining the complex logic behind them.
 
-Video 👉 youtube Video
+Video 👉 https://www.youtube.com/watch?v=BQL2Pmx8i9I
 
 
 ## Usage
