@@ -41,7 +41,7 @@ export function SiteHeader() {
               </>
             ) : <></>}
             <Link
-              href={siteConfig.links.github}
+              href="https://github.com/rushi3691/DevRewards/"
               target="_blank"
               rel="noreferrer"
             >
