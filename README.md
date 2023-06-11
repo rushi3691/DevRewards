@@ -1,5 +1,3 @@
-![Forks](https://img.shields.io/badge/forks-0-blue)
-![Stars](https://img.shields.io/badge/stars-0-yellow)
 
 ![devrewards-high-resolution-logo-black-on-white-background (1)](https://github.com/rushi3691/DevRewards/assets/71341783/de34cbe2-eb88-4e9b-b1b7-8b7fbb9f3ea2)
 
@@ -28,10 +26,11 @@ Our application provides a simple and secure way for users to connect their GitH
 Do checkout our project once
 
 Live Link 👉 **[DevRewards](https://devrewards.vercel.app/)**
+**Use Sepolia Testnet**
 
 Click on the link below to see our demo video where we have given a demo of our finished project while explaining the complex logic behind them.
 
-Video 👉 https://www.youtube.com/watch?v=BQL2Pmx8i9I
+Video 👉 **[Demo](https://www.youtube.com/watch?v=BQL2Pmx8i9I)**
 
 
 ## Usage
