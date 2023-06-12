@@ -4,11 +4,6 @@ pragma solidity ^0.8.7;
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 import "@chainlink/contracts/src/v0.8/ConfirmedOwner.sol";
 
-/**
- * THIS IS AN EXAMPLE CONTRACT THAT USES UN-AUDITED CODE.
- * DO NOT USE THIS CODE IN PRODUCTION.
- */
-
 contract Mail is ChainlinkClient, ConfirmedOwner {
     using Chainlink for Chainlink.Request;
 
@@ -21,14 +16,14 @@ contract Mail is ChainlinkClient, ConfirmedOwner {
     );
 
     /**
-     *  Goerli
-     *@dev LINK address in Goerli network: 0x326C977E6efc84E512bB9C30f76E30c160eD06FB
+     *  Sepolia
+     *@dev LINK address in Sepolia network: 0x779877A7B0D9E8603169DdbD7836e478b4624789
      * @dev Check https://docs.chain.link/docs/link-token-contracts/ for LINK address for the right network
      */
     constructor() ConfirmedOwner(msg.sender) {
         setChainlinkToken(0x779877A7B0D9E8603169DdbD7836e478b4624789);
     }
-
+//sends mailing request to the oracles contract at address - 0x4678598d579D119b576C164A20194133d34d9EE9 
     function mail(
         string memory _jobId,
         string memory recipientEmail,
@@ -45,7 +40,7 @@ contract Mail is ChainlinkClient, ConfirmedOwner {
         req.add("repoName", repoName);
         sendOperatorRequestTo(0x4678598d579D119b576C164A20194133d34d9EE9, req, ORACLE_PAYMENT);
     }
-
+//is executed after mail request is fulfilled 
     function fulfillRequestInfo(bytes32 _requestId, string memory _info)
         public
         recordChainlinkFulfillment(_requestId)
@@ -57,49 +52,7 @@ contract Mail is ChainlinkClient, ConfirmedOwner {
     ========= UTILITY FUNCTIONS ==========
     */
 
-    function contractBalances()
-        public
-        view
-        returns (uint256 eth, uint256 link)
-    {
-        eth = address(this).balance;
-
-        LinkTokenInterface linkContract = LinkTokenInterface(
-            chainlinkTokenAddress()
-        );
-        link = linkContract.balanceOf(address(this));
-    }
-
-    function getChainlinkToken() public view returns (address) {
-        return chainlinkTokenAddress();
-    }
-
-    function withdrawLink() public onlyOwner {
-        LinkTokenInterface link = LinkTokenInterface(chainlinkTokenAddress());
-        require(
-            link.transfer(msg.sender, link.balanceOf(address(this))),
-            "Unable to transfer Link"
-        );
-    }
-
-    function withdrawBalance() public onlyOwner {
-        payable(msg.sender).transfer(address(this).balance);
-    }
-
-    function cancelRequest(
-        bytes32 _requestId,
-        uint256 _payment,
-        bytes4 _callbackFunctionId,
-        uint256 _expiration
-    ) public onlyOwner {
-        cancelChainlinkRequest(
-            _requestId,
-            _payment,
-            _callbackFunctionId,
-            _expiration
-        );
-    }
-
+    
     function stringToBytes32(string memory source)
         private
         pure
