@@ -49,6 +49,15 @@ To use DevRewards, follow these steps:
 
 ![hackathon (2)](https://github.com/rushi3691/DevRewards/assets/71341783/a57a3f00-96e3-4264-9422-d1cf6b17f186)
 
+As you can see in the diagram, there are several components to the system.
+- The user accesses the DevRewards web app and connects their wallet and Github account.
+- The web app communicates with a smart contract running on Ethereum that stores all user details like wallet address, Github username, listed repositories, their reward rules, their balances etc.
+- There are three services running on AWS EC2 instances:
+  - A Chainlink node which is used to implement one of the key features of DevRewards: notification system. When balance of a repository falls below certain threshold point, smart contract identifies it and sends email notification via external adapter connected through Chainlink node.
+  - A custom backend service that handles Github webhook events triggered when someone contributes to code of listed repository. This service is partly responsible for identifying and distributing rewards to users based on their contributions. After recieving webhook event of code contribution (triggered when PR is merged), it communicates with the smart contract to send reward to the user. The smart contract then processes validation and distribution of rewards based on predefined criteria.<br>
+ This backend also provides other features related to Github such as listing user's repositories(on Github), getting user's github account info, etc.
+  - An External Adapter that sends emails using Gmail account
+- Smart contract manage rewards (earned by users based on their contributions made through GitHub), reward rules, repositories listed on the platform, balances of repositories on the platform(funding, withdrawal), etc.
 
 ## Technology
 
