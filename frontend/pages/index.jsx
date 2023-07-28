@@ -82,7 +82,7 @@ export default function IndexPage() {
         setRegLoading(true);
         // console.log(installation_id)
         const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/check_installation?id=${installation_id}&address=${address}&code=${code}`);
-        if(res.status !== 200) {
+        if (res.status !== 200) {
           setRegLoading(false);
           return;
         }
@@ -138,11 +138,19 @@ export default function IndexPage() {
             Demo
           </Link>
         </div>
-        <h1 className="text-center mt-20 text-2xl font-extrabold leading-tight tracking-tighter sm:text-xl md:text-2xl lg:text-3xl">
+        {/* if screed size if sm or xs then show text saying use desktop for better experience */}
+        <div className="my-5 md:hidden flex justify-center items-center">
+          <p className="text-muted-foreground max-w-[700px] text-lg sm:text-xl text-center">
+            Use Desktop Version for better experience
+          </p>
+        </div>
+
+        <h1 className="text-center md:mt-20 text-2xl font-extrabold leading-tight tracking-tighter sm:text-xl md:text-2xl lg:text-3xl">
           Key Highlights
         </h1>
 
-        <div className="container grid grid-cols-3 gap-3 w-[90%]">
+        {/* <div className="container grid grid-cols-3 gap-3 w-[90%] "> */}
+        <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-[90%] ">
 
           {info_card_data.map((info, index) => {
             return <InfoCard key={index} title={info.title} points={info.points} />
