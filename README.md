@@ -21,6 +21,7 @@ Our application provides a simple and secure way for users to connect their GitH
 - Automatic reward delivery: The platform ensures rewards are delivered to contributors automatically.
 - List your own repositories: Share your projects on the platform and invite others to contribute.
 - Chainlink Oracle integration: Balance notification system for project owners to send emails via Gmail.
+- List your recent contributions using Push Protocol notifications.
 - Logs: See all the transactions happening through the platform, such as funding, withdrawing, and rewarding code contributions.
 
 
@@ -53,8 +54,8 @@ To use DevRewards, follow these steps:
 
 ## Technology
 
-- Frontend: Next.js, Tailwind CSS, Wagmi
-- Backend: Smart contract, Express.js, Node.js, Chainlink Oracle
+- Frontend: Next.js, Tailwind CSS, Wagmi, Push protocol
+- Backend: Smart contract, Express.js, Node.js, Chainlink Oracle, Push protocol
 - Deployment: Docker, AWS, Vercel
 
 
