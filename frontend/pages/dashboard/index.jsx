@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import UserRepoCard from "@/components/user-repo-card"
+import RecentContributionsCard from "@/components/recent-contributions"
 import { useAccount } from "wagmi"
 import { useContext, useEffect, useState } from "react"
 import { AppContext } from "@/components/Global-States"
@@ -157,6 +158,11 @@ export default function Dashboard() {
           <Button asChild><Link className="w-full h-full" href="/dashboard/connect">List new Repo</Link></Button>
         </div>
       </div>
+
+      {isGithubConnected &&
+        <RecentContributionsCard userName={githubData.name} />
+      }
+
     </>
   )
 }
