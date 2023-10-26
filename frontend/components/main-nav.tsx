@@ -1,18 +1,54 @@
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";
+import { PushAPI } from "@pushprotocol/restapi";
+import { ethers } from "ethers";
+import { useAccount } from "wagmi";
 
-import { NavItem } from "@/types/nav"
-import { cn } from "@/lib/utils"
-import { useAccount } from "wagmi"
-import { AppContext } from "./Global-States"
+
+
+import { NavItem } from "@/types/nav";
+import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/use-toast";
+
+
+
+import { AppContext } from "./Global-States";
+
 
 interface MainNavProps {
   items?: NavItem[]
 }
 
 export function MainNav() {
-  const { isConnected } = useAccount();
-  const { isGithubConnected } = React.useContext(AppContext);
+  const { isConnected, connector} = useAccount();
+  const { isGithubConnected } = React.useContext(AppContext)
+  const { toast } = useToast()
+
+  React.useEffect(()=>{
+    async function listenForEvents(){
+      if(!connector) return;
+      const provider = await connector.getProvider();
+      const providerEther = new ethers.providers.Web3Provider(provider);
+      const signer = providerEther.getSigner();
+      // @ts-ignore
+      const user = await PushAPI.initialize(signer, { env: "staging" })
+
+      // To listen to real time notifications
+      user.stream.on("STREAM.NOTIF", (data) => {
+        // console.log(data)
+        toast({
+          title: data.message.notification.title,
+          description: data.message.notification.body,
+        })
+      })
+
+      console.log("initialized")
+    }
+    if(isGithubConnected){
+      listenForEvents();
+    }
+  }, [isGithubConnected])
+
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">

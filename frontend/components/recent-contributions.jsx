@@ -1,7 +1,7 @@
 import { use, useContext, useEffect, useState } from "react"
 import ErrorPage from "next/error"
 import Link from "next/link"
-import * as PushAPI from "@pushprotocol/restapi"
+import {PushAPI} from "@pushprotocol/restapi"
 import { ethers } from "ethers"
 import { Loader2, Link as SomeLink } from "lucide-react"
 import { useAccount } from "wagmi"
@@ -47,29 +47,29 @@ export default function RecentContributionsCard({ userName }) {
   const [isLogs, setIsLogs] = useState(false)
 
   async function getNotifications() {
-    setLogsLoading(true)
-    const notifications = await PushAPI.user.getFeeds({
-      user: "eip155:5:0xFC80A19A1475a98622D4b13b5105440995d403Ec", // user address in CAIP
-      env: "staging",
-    })
-    const data = notifications
-      .filter((notification) => {
-        const sub = notification.message.split(":")
-        if (sub.length < 3) {
-          return false
-        }
-        return sub[0] == githubData.userId
-      })
-      .map((notification) => {
-        const sub = notification.message.split(":")
-        return {
-          userId: sub[0],
-          repo: sub[1],
-          type: sub[2],
-        }
-      })
-    setLogs(data.slice(0, 5))
-    setLogsLoading(false)
+    // setLogsLoading(true)
+    // const notifications = await PushAPI.user.getFeeds({
+    //   user: "eip155:5:0xFC80A19A1475a98622D4b13b5105440995d403Ec", // user address in CAIP
+    //   env: "staging",
+    // })
+    // const data = notifications
+    //   .filter((notification) => {
+    //     const sub = notification.message.split(":")
+    //     if (sub.length < 3) {
+    //       return false
+    //     }
+    //     return sub[0] == githubData.userId
+    //   })
+    //   .map((notification) => {
+    //     const sub = notification.message.split(":")
+    //     return {
+    //       userId: sub[0],
+    //       repo: sub[1],
+    //       type: sub[2],
+    //     }
+    //   })
+    // setLogs(data.slice(0, 5))
+    // setLogsLoading(false)
   }
   useEffect(() => {
     getNotifications()

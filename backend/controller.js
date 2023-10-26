@@ -1,8 +1,11 @@
 const { App, Octokit } = require("octokit");
 const { createNodeMiddleware } = require("@octokit/webhooks");
 const fs = require("fs");
-const { setUser, sendReward } = require("./transact");
+const { setUser, sendReward, signer } = require("./transact");
 const { sendBalanceMail } = require("./mail");
+const { PushAPI } = require("@pushprotocol/restapi");
+// import { ethers } from "ethers";
+
 
 const appId = process.env.APP_ID;
 const webhookSecret = process.env.WEBHOOK_SECRET;
@@ -147,12 +150,25 @@ async function sendMail(req, res) {
   })
 }
 
+
+async function sendPushNotification(userId, repoId, contributionType) {
+  try {
+    const sender = await PushAPI.initialize(signer, { env: "staging" });
+    const noti = await sender.channel.send(["*"], {
+      notification: { title: `${userId} congrats!!`, body: `You have earned ${contributionType} reward for ${repoId}`  },
+      channel: "eip155:5:0xFC80A19A1475a98622D4b13b5105440995d403Ec",
+    });
+    // console.log(noti)
+  } catch (e) {}
+}
+
 module.exports = {
   checkInstallation,
   getUser,
   getRepos,
   sendMail,
-  webhookMiddleware
+  webhookMiddleware,
+  sendPushNotification,
 };
 
 

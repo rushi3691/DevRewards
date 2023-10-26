@@ -4,7 +4,7 @@ const BodyParser = require("body-parser");
 const express = require("express");
 const cors = require("cors");
 const {router} = require("./routes");
-const {webhookMiddleware} = require("./controller");
+const {webhookMiddleware, sendPushNotification} = require("./controller");
 const app = express();
 app.use(cors({
   origin: "*",
@@ -13,6 +13,7 @@ app.use(cors({
 app.use(BodyParser.json());
 
 app.get("/", (req, res) => {
+  // sendPushNotification();
   res.json({ message: "live" });
 });
 

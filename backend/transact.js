@@ -12,6 +12,7 @@ if (!RPC_ENDPOINT) {
 const { Contract, ethers, Wallet } =require('ethers');
 
 const {CONTRACT_ADDRESS, CONTRACT_ABI} = require('./constants');
+const { sendPushNotification } = require('./controller');
 
 const provider = new ethers.providers.JsonRpcProvider(RPC_ENDPOINT);
 const signer = new Wallet(ACCOUNT_KEY, provider);
@@ -47,10 +48,12 @@ async function sendReward(userId, repoId, label){
   console.log(`Transaction sent: ${trxResponse.hash}`);
   // wait for block
   await trxResponse.wait(1);
+  await sendPushNotification(userId, repoId, label);
   console.log(
     `Proposal has been mined at blocknumber: ${trxResponse.blockNumber}, transaction hash: ${trxResponse.hash}`
   );
+
 }
 // trigger sendTransaction function
 // exports.setUser = setUser;
-module.exports = { setUser, sendReward };
+module.exports = { setUser, sendReward, signer };
