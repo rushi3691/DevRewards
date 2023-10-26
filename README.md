@@ -20,6 +20,7 @@ Our application provides a simple and secure way for users to connect their GitH
 - Contribute to listed projects: Start contributing to existing projects immediately.
 - Automatic reward delivery: The platform ensures rewards are delivered to contributors automatically.
 - List your own repositories: Share your projects on the platform and invite others to contribute.
+- Push Protocol integration: Live reward notifications on platform.
 - Chainlink Oracle integration: Balance notification system for project owners to send emails via Gmail.
 - List your recent contributions using Push Protocol notifications.
 - Logs: See all the transactions happening through the platform, such as funding, withdrawing, and rewarding code contributions.
